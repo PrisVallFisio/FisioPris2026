@@ -100,44 +100,428 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
 });
 
 
-/*=========================================================
-    FORMULARIO
-==========================================================*/
+/* =====================================================
+   FISIOLIFE
+   JAVASCRIPT - FORMULARIO DE CITAS CON SUPABASE
+===================================================== */
 
-const form=document.getElementById("appointmentForm");
 
-form.addEventListener("submit",function(e){
+/* =====================================================
+   CONFIGURACIÓN SUPABASE
+===================================================== */
 
-    e.preventDefault();
+// ⚠️ REEMPLAZA ESTOS DOS VALORES POR LOS DE TU PROYECTO
 
-    const inputs=form.querySelectorAll("input");
+const SUPABASE_URL = "https://TU-PROYECTO.supabase.co";
 
-    let valido=true;
+const SUPABASE_KEY = "TU_PUBLISHABLE_KEY";
 
-    inputs.forEach(input=>{
 
-        if(input.value.trim()==""){
+/* =====================================================
+   CARGAR LIBRERÍA SUPABASE
+===================================================== */
 
-            valido=false;
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+
+/* =====================================================
+   FORMULARIO
+===================================================== */
+
+const form = document.getElementById("appointmentForm");
+
+const submitButton = document.getElementById("submitAppointment");
+
+
+/* =====================================================
+   ENVIAR CITA
+===================================================== */
+
+if (form) {
+
+    form.addEventListener("submit", async function (e) {
+
+        e.preventDefault();
+
+
+        /* ---------------------------------------------
+           OBTENER DATOS
+        --------------------------------------------- */
+
+        const nombre = document
+            .getElementById("nombre")
+            .value
+            .trim();
+
+        const telefono = document
+            .getElementById("telefono")
+            .value
+            .trim();
+
+        const email = document
+            .getElementById("email")
+            .value
+            .trim();
+
+        const servicio = document
+            .getElementById("servicio")
+            .value;
+
+        const fecha = document
+            .getElementById("fecha")
+            .value;
+
+        const hora = document
+            .getElementById("hora")
+            .value;
+
+        const mensaje = document
+            .getElementById("mensaje")
+            .value
+            .trim();
+
+
+        /* ---------------------------------------------
+           VALIDACIÓN
+        --------------------------------------------- */
+
+        if (
+            !nombre ||
+            !telefono ||
+            !email ||
+            !servicio ||
+            !fecha ||
+            !hora
+        ) {
+
+            alert(
+                "⚠️ Por favor completa todos los campos obligatorios."
+            );
+
+            return;
+
+        }
+
+
+        /* ---------------------------------------------
+           CAMBIAR ESTADO DEL BOTÓN
+        --------------------------------------------- */
+
+        submitButton.disabled = true;
+
+        submitButton.innerHTML = `
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            Enviando...
+        `;
+
+
+        try {
+
+
+            /* -----------------------------------------
+               INSERTAR EN SUPABASE
+            ----------------------------------------- */
+
+            const { data, error } = await supabaseClient
+                .from("citas")
+                .insert([
+
+                    {
+
+                        nombre: nombre,
+
+                        telefono: telefono,
+
+                        email: email,
+
+                        servicio: servicio,
+
+                        fecha_cita: fecha,
+
+                        hora_cita: hora,
+
+                        mensaje: mensaje,
+
+                        estado: "Pendiente"
+
+                    }
+
+                ])
+                .select();
+
+
+            /* -----------------------------------------
+               COMPROBAR ERROR
+            ----------------------------------------- */
+
+            if (error) {
+
+                console.error(
+                    "Error Supabase:",
+                    error
+                );
+
+                alert(
+                    "❌ No se pudo registrar la cita.\n\n" +
+                    "Por favor intenta nuevamente."
+                );
+
+                return;
+
+            }
+
+
+            /* -----------------------------------------
+               ÉXITO
+            ----------------------------------------- */
+
+            alert(
+                "✅ ¡Cita registrada correctamente!\n\n" +
+
+                "Servicio: " +
+                servicio +
+
+                "\nFecha: " +
+                fecha +
+
+                "\nHora: " +
+                hora +
+
+                "\n\n" +
+
+                "Nos pondremos en contacto contigo para confirmar tu cita."
+            );
+
+
+            /* -----------------------------------------
+               LIMPIAR FORMULARIO
+            ----------------------------------------- */
+
+            form.reset();
+
+
+        } catch (error) {
+
+
+            console.error(
+                "Error:",
+                error
+            );
+
+
+            alert(
+                "❌ Ocurrió un error inesperado."
+            );
+
+
+        } finally {
+
+
+            /* -----------------------------------------
+               RESTAURAR BOTÓN
+            ----------------------------------------- */
+
+            submitButton.disabled = false;
+
+            submitButton.innerHTML = `
+                <i class="fa-solid fa-calendar-check"></i>
+                Agendar Cita
+            `;
 
         }
 
     });
 
-    if(!valido){
+}
 
-        alert("Por favor complete todos los campos obligatorios.");
 
-        return;
+/* =====================================================
+   FECHA MÍNIMA
+   Evita seleccionar fechas anteriores a hoy
+===================================================== */
 
-    }
+const fechaInput = document.getElementById("fecha");
 
-    alert("✅ Su solicitud fue enviada correctamente. Nos comunicaremos con usted muy pronto.");
+if (fechaInput) {
 
-    form.reset();
+    const hoy = new Date();
 
-});
+    const año = hoy.getFullYear();
 
+    const mes = String(
+        hoy.getMonth() + 1
+    ).padStart(2, "0");
+
+    const dia = String(
+        hoy.getDate()
+    ).padStart(2, "0");
+
+    fechaInput.min =
+        `${año}-${mes}-${dia}`;
+
+}
+
+
+/* =====================================================
+   MENÚ HAMBURGUESA
+===================================================== */
+
+const menuToggle =
+    document.getElementById("menu-toggle");
+
+const navLinks =
+    document.querySelector(".nav-links");
+
+
+if (menuToggle && navLinks) {
+
+    menuToggle.addEventListener(
+        "click",
+        () => {
+
+            navLinks.classList.toggle(
+                "active"
+            );
+
+
+            const icon =
+                menuToggle.querySelector("i");
+
+
+            if (
+                navLinks.classList.contains("active")
+            ) {
+
+                icon.classList.remove(
+                    "fa-bars"
+                );
+
+                icon.classList.add(
+                    "fa-xmark"
+                );
+
+            } else {
+
+                icon.classList.remove(
+                    "fa-xmark"
+                );
+
+                icon.classList.add(
+                    "fa-bars"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* ---------------------------------------------
+       CERRAR MENÚ AL SELECCIONAR
+    --------------------------------------------- */
+
+    document
+        .querySelectorAll(".nav-links a")
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    navLinks.classList.remove(
+                        "active"
+                    );
+
+
+                    const icon =
+                        menuToggle.querySelector("i");
+
+
+                    icon.classList.remove(
+                        "fa-xmark"
+                    );
+
+                    icon.classList.add(
+                        "fa-bars"
+                    );
+
+                }
+            );
+
+        });
+
+}
+
+
+/* =====================================================
+   HEADER AL HACER SCROLL
+===================================================== */
+
+const header =
+    document.getElementById("header");
+
+
+if (header) {
+
+    window.addEventListener(
+        "scroll",
+        () => {
+
+            if (window.scrollY > 60) {
+
+                header.classList.add(
+                    "scrolled"
+                );
+
+            } else {
+
+                header.classList.remove(
+                    "scrolled"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   SCROLL SUAVE
+===================================================== */
+
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(anchor => {
+
+        anchor.addEventListener(
+            "click",
+            function (e) {
+
+                const destino =
+                    document.querySelector(
+                        this.getAttribute("href")
+                    );
+
+
+                if (destino) {
+
+                    e.preventDefault();
+
+                    destino.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                }
+
+            }
+        );
+
+    });
 
 /*=========================================================
         ANIMACIÓN AL HACER SCROLL
