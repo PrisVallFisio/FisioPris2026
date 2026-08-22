@@ -263,46 +263,169 @@
 
     </section>
 
-    <!-- ================= CONTACTO ================= -->
+<!-- ================= FORMULARIO DE CITAS ================= -->
 
-    <section class="contact" id="contacto">
+<div class="contact-form">
 
-        <div class="section-title">
+    <form id="appointmentForm">
 
-            <h2>Agenda tu cita</h2>
+        <!-- Nombre -->
+        <div class="form-group">
+
+            <label for="nombre">
+                Nombre completo
+            </label>
+
+            <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                placeholder="Ej. Juan Pérez"
+                autocomplete="name"
+                required
+            >
 
         </div>
 
-        <div class="contact-container">
 
-            <!-- Formulario -->
+        <!-- Teléfono -->
+        <div class="form-group">
 
-            <div class="contact-form">
+            <label for="telefono">
+                Teléfono
+            </label>
 
-                <form id="appointmentForm">
+            <input
+                type="tel"
+                id="telefono"
+                name="telefono"
+                placeholder="Ej. 999 999 999"
+                autocomplete="tel"
+                required
+            >
 
-                    <input type="text"
-                        placeholder="Nombre completo"
-                        required>
+        </div>
 
-                    <input type="tel"
-                        placeholder="Teléfono"
-                        required>
 
-                    <input type="date"
-                        required>
+        <!-- Correo -->
+        <div class="form-group">
 
-                    <textarea
-                        placeholder="Escribe tu mensaje"
-                        rows="6"></textarea>
+            <label for="email">
+                Correo electrónico
+            </label>
 
-                    <button type="submit">
-                        Enviar Solicitud
-                    </button>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Ej. correo@gmail.com"
+                autocomplete="email"
+                required
+            >
 
-                </form>
+        </div>
 
-            </div>
+
+        <!-- Servicio -->
+        <div class="form-group">
+
+            <label for="servicio">
+                Tipo de servicio
+            </label>
+
+            <select
+                id="servicio"
+                name="servicio"
+                required
+            >
+
+                <option value="" selected disabled>
+                    Selecciona un servicio
+                </option>
+
+                <option value="Fisioterapia Deportiva">
+                    Fisioterapia Deportiva
+                </option>
+
+                <option value="Rehabilitación de Lesiones">
+                    Rehabilitación de Lesiones
+                </option>
+
+                <option value="Terapia Manual">
+                    Terapia Manual
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Fecha -->
+        <div class="form-group">
+
+            <label for="fecha">
+                Fecha de cita
+            </label>
+
+            <input
+                type="date"
+                id="fecha"
+                name="fecha"
+                required
+            >
+
+        </div>
+
+
+        <!-- Hora -->
+        <div class="form-group">
+
+            <label for="hora">
+                Hora de cita
+            </label>
+
+            <input
+                type="time"
+                id="hora"
+                name="hora"
+                required
+            >
+
+        </div>
+
+
+        <!-- Mensaje -->
+        <div class="form-group">
+
+            <label for="mensaje">
+                Mensaje
+            </label>
+
+            <textarea
+                id="mensaje"
+                name="mensaje"
+                rows="5"
+                placeholder="Cuéntanos brevemente el motivo de tu consulta..."
+            ></textarea>
+
+        </div>
+
+
+        <!-- Botón -->
+        <button
+            type="submit"
+            id="submitAppointment"
+        >
+
+            <i class="fa-solid fa-calendar-check"></i>
+
+            Agendar Cita
+
+        </button>
+
+    </form>
+
+</div>
 
             <!-- Información -->
 
