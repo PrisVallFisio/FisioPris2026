@@ -112,9 +112,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
 
 // ⚠️ REEMPLAZA ESTOS DOS VALORES POR LOS DE TU PROYECTO
 
-const SUPABASE_URL = "https://TU-PROYECTO.supabase.co";
+const SUPABASE_URL = "https://osaziintfxijhvaafntx.supabase.co/rest/v1/";
 
-const SUPABASE_KEY = "TU_PUBLISHABLE_KEY";
+const SUPABASE_KEY = "osaziintfxijhvaafntx";
 
 
 /* =====================================================
