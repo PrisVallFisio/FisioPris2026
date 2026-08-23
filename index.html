@@ -269,207 +269,397 @@
 
     </section>
 
-<!-- ================= FORMULARIO DE CITAS ================= -->
+<!-- ================= CONTACTO ================= -->
 
-<div class="contact-form">
+<section class="contact" id="contacto">
 
-    <form id="appointmentForm">
+    <div class="section-title">
 
-        <!-- Nombre -->
-        <div class="form-group">
+        <span class="section-tag">
+            AGENDA TU ATENCIÓN
+        </span>
 
-            <label for="nombre">
-                Nombre completo
-            </label>
+        <h2>
+            Registra tu cita
+        </h2>
 
-            <input
-                type="text"
-                id="nombre"
-                name="nombre"
-                placeholder="Ej. Juan Pérez"
-                autocomplete="name"
-                required
+        <p>
+            Completa tus datos y nos pondremos en contacto contigo
+            para confirmar tu atención.
+        </p>
+
+    </div>
+
+
+    <div class="contact-container">
+
+        <!-- ================= FORMULARIO ================= -->
+
+        <div class="contact-form">
+
+            <div class="form-header">
+
+                <div class="form-icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+
+                <div>
+                    <h3>Registrar cita</h3>
+
+                    <p>
+                        Completa la información de tu cita
+                    </p>
+                </div>
+
+            </div>
+
+
+            <form id="appointmentForm">
+
+
+                <!-- NOMBRE -->
+
+                <div class="form-group">
+
+                    <label for="nombre">
+                        <i class="fa-solid fa-user"></i>
+                        Nombre completo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Ej. Juan Pérez"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- TELÉFONO -->
+
+                <div class="form-group">
+
+                    <label for="telefono">
+                        <i class="fa-solid fa-phone"></i>
+                        Teléfono
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="telefono"
+                        name="telefono"
+                        placeholder="Ej. 999 999 999"
+                        autocomplete="tel"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        <i class="fa-solid fa-envelope"></i>
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Ej. correo@gmail.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- SERVICIO -->
+
+                <div class="form-group">
+
+                    <label for="servicio">
+                        <i class="fa-solid fa-hand-holding-medical"></i>
+                        Tipo de servicio
+                    </label>
+
+                    <select
+                        id="servicio"
+                        name="servicio"
+                        required
+                    >
+
+                        <option
+                            value=""
+                            selected
+                            disabled
+                        >
+                            Selecciona un servicio
+                        </option>
+
+                        <option value="Fisioterapia Deportiva">
+                            Fisioterapia Deportiva
+                        </option>
+
+                        <option value="Rehabilitación de Lesiones">
+                            Rehabilitación de Lesiones
+                        </option>
+
+                        <option value="Terapia Manual">
+                            Terapia Manual
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- FECHA -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="fecha">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            Fecha
+                        </label>
+
+                        <input
+                            type="date"
+                            id="fecha"
+                            name="fecha"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- HORA -->
+
+                    <div class="form-group">
+
+                        <label for="hora">
+                            <i class="fa-solid fa-clock"></i>
+                            Hora
+                        </label>
+
+                        <input
+                            type="time"
+                            id="hora"
+                            name="hora"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- MENSAJE -->
+
+                <div class="form-group">
+
+                    <label for="mensaje">
+                        <i class="fa-solid fa-message"></i>
+                        Mensaje
+                    </label>
+
+                    <textarea
+                        id="mensaje"
+                        name="mensaje"
+                        rows="4"
+                        placeholder="Cuéntanos brevemente el motivo de tu consulta..."
+                    ></textarea>
+
+                </div>
+
+
+                <!-- BOTÓN -->
+
+                <button
+                    type="submit"
+                    id="submitAppointment"
+                    class="btn-submit"
+                >
+
+                    <i class="fa-solid fa-calendar-check"></i>
+
+                    Registrar Cita
+
+                </button>
+
+
+                <p class="form-note">
+
+                    <i class="fa-solid fa-shield-heart"></i>
+
+                    Tus datos serán utilizados únicamente
+                    para gestionar tu cita.
+
+                </p>
+
+            </form>
+
+        </div>
+
+
+        <!-- ================= INFORMACIÓN ================= -->
+
+        <div class="contact-info">
+
+            <span class="section-tag">
+                CONTÁCTANOS
+            </span>
+
+            <h3>
+                Estamos aquí para ayudarte
+            </h3>
+
+            <p class="contact-description">
+
+                ¿Tienes alguna consulta antes de registrar tu cita?
+                Comunícate directamente con nosotros.
+
+            </p>
+
+
+            <!-- WHATSAPP -->
+
+            <a
+                href="https://wa.me/51933510949"
+                class="whatsapp-card"
+                target="_blank"
+                rel="noopener noreferrer"
             >
 
-        </div>
+                <div class="info-icon">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+
+                <div>
+
+                    <strong>
+                        WhatsApp
+                    </strong>
+
+                    <span>
+                        +51 933 510 949
+                    </span>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+            </a>
 
 
-        <!-- Teléfono -->
-        <div class="form-group">
+            <!-- UBICACIÓN -->
 
-            <label for="telefono">
-                Teléfono
-            </label>
+            <div class="info-item">
 
-            <input
-                type="tel"
-                id="telefono"
-                name="telefono"
-                placeholder="Ej. 999 999 999"
-                autocomplete="tel"
-                required
-            >
+                <div class="info-icon">
 
-        </div>
-
-
-        <!-- Correo -->
-        <div class="form-group">
-
-            <label for="email">
-                Correo electrónico
-            </label>
-
-            <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Ej. correo@gmail.com"
-                autocomplete="email"
-                required
-            >
-
-        </div>
-
-
-        <!-- Servicio -->
-        <div class="form-group">
-
-            <label for="servicio">
-                Tipo de servicio
-            </label>
-
-            <select
-                id="servicio"
-                name="servicio"
-                required
-            >
-
-                <option value="" selected disabled>
-                    Selecciona un servicio
-                </option>
-
-                <option value="Fisioterapia Deportiva">
-                    Fisioterapia Deportiva
-                </option>
-
-                <option value="Rehabilitación de Lesiones">
-                    Rehabilitación de Lesiones
-                </option>
-
-                <option value="Terapia Manual">
-                    Terapia Manual
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <!-- Fecha -->
-        <div class="form-group">
-
-            <label for="fecha">
-                Fecha de cita
-            </label>
-
-            <input
-                type="date"
-                id="fecha"
-                name="fecha"
-                required
-            >
-
-        </div>
-
-
-        <!-- Hora -->
-        <div class="form-group">
-
-            <label for="hora">
-                Hora de cita
-            </label>
-
-            <input
-                type="time"
-                id="hora"
-                name="hora"
-                required
-            >
-
-        </div>
-
-
-        <!-- Mensaje -->
-        <div class="form-group">
-
-            <label for="mensaje">
-                Mensaje
-            </label>
-
-            <textarea
-                id="mensaje"
-                name="mensaje"
-                rows="5"
-                placeholder="Cuéntanos brevemente el motivo de tu consulta..."
-            ></textarea>
-
-        </div>
-
-
-        <!-- Botón -->
-        <button
-            type="submit"
-            id="submitAppointment"
-        >
-
-            <i class="fa-solid fa-calendar-check"></i>
-
-            Agendar Cita
-
-        </button>
-
-    </form>
-
-</div>
-
-            <!-- Información -->
-
-            <div class="contact-info">
-
-                <h3>Información</h3>
-
-                <p>
                     <i class="fa-solid fa-location-dot"></i>
-                    Villa El Salvador
-                </p>
 
-                <p>
-                    <i class="fa-solid fa-phone"></i>
-                    +51 933 510 949
-                </p>
+                </div>
 
-                <p>
+                <div>
+
+                    <strong>
+                        Ubicación
+                    </strong>
+
+                    <span>
+                        Villa El Salvador
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- CORREO -->
+
+            <div class="info-item">
+
+                <div class="info-icon">
+
                     <i class="fa-solid fa-envelope"></i>
-                    prisc.vallejos@gmail.com
+
+                </div>
+
+                <div>
+
+                    <strong>
+                        Correo electrónico
+                    </strong>
+
+                    <span>
+                        prisc.vallejos@gmail.com
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- HORARIOS -->
+
+            <div class="schedule">
+
+                <h4>
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    Horarios de atención
+
+                </h4>
+
+                <p>
+                    <strong>Lunes - Viernes</strong>
+                    <span>08:00 AM - 08:00 PM</span>
                 </p>
 
-                <hr>
+                <p>
+                    <strong>Sábados</strong>
+                    <span>08:00 AM - 02:00 PM</span>
+                </p>
 
-                <h3>Horarios</h3>
+            </div>
 
-                <p>Lunes - Viernes</p>
-                <p>08:00 AM - 08:00 PM</p>
 
-                <p>Sábados</p>
-                <p>08:00 AM - 02:00 PM</p>
+            <!-- MENSAJE -->
+
+            <div class="contact-message">
+
+                <i class="fa-solid fa-heart-pulse"></i>
+
+                <p>
+                    Tu bienestar es nuestra prioridad.
+                    Estamos comprometidos con acompañarte
+                    en cada paso de tu recuperación.
+                </p>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
 
+</section>
+
+    <a href="#contacto" class="btn-header">
+    <i class="fa-solid fa-calendar-check"></i>
+    Registrar Cita
+    </a>
+    
     <!-- ================= FOOTER ================= -->
 
     <footer>
