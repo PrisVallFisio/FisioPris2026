@@ -431,8 +431,7 @@ if (form) {
 
             console.log(
                 "✅ Cita registrada:",
-                data
-            );
+                );
 
 
             alert(
