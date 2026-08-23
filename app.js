@@ -374,93 +374,80 @@ if (form) {
 
 
             /* =================================================
-               INSERTAR EN TABLA CITAS
-            ================================================= */
+   INSERTAR EN TABLA CITAS
+================================================= */
 
-            const { error } = await supabaseClient
-             .from("citas")
-             .insert([cita]);
-
-
-            /* =================================================
-               COMPROBAR ERROR
-            ================================================= */
-
-            if (error) {
-
-                console.error(
-                    "❌ Error Supabase:",
-                    error
-                );
-
-                console.error(
-                    "Código:",
-                    error.code
-                );
-
-                console.error(
-                    "Mensaje:",
-                    error.message
-                );
-
-                console.error(
-                    "Detalles:",
-                    error.details
-                );
-
-                console.error(
-                    "Hint:",
-                    error.hint
-                );
+const { error } = await supabaseClient
+    .from("citas")
+    .insert([cita]);
 
 
-                alert(
-                    "❌ No se pudo registrar la cita.\n\n" +
-                    "Error: " +
-                    error.message
-                );
+/* =================================================
+   COMPROBAR ERROR
+================================================= */
 
-                return;
+if (error) {
 
-            }
+    console.error(
+        "❌ Error Supabase:",
+        error
+    );
 
+    console.error(
+        "Código:",
+        error.code
+    );
 
-            /* =================================================
-               ÉXITO
-            ================================================= */
+    console.error(
+        "Mensaje:",
+        error.message
+    );
 
-            console.log(
-                "✅ Cita registrada:",
-                );
+    alert(
+        "❌ No se pudo registrar la cita.\n\n" +
+        error.message
+    );
 
+    return;
 
-            alert(
-                "✅ ¡Cita registrada correctamente!\n\n" +
-
-                "👤 Nombre: " +
-                nombre +
-
-                "\n📋 Servicio: " +
-                servicio +
-
-                "\n📅 Fecha: " +
-                fecha +
-
-                "\n🕐 Hora: " +
-                hora +
-
-                "\n\n" +
-
-                "Nos pondremos en contacto contigo para confirmar tu cita."
-            );
+}
 
 
-            /* =================================================
-               LIMPIAR FORMULARIO
-            ================================================= */
+/* =================================================
+   ÉXITO
+================================================= */
 
-            form.reset();
+console.log(
+    "✅ Cita registrada correctamente"
+);
 
+
+alert(
+    "✅ ¡Cita registrada correctamente!\n\n" +
+
+    "👤 Nombre: " +
+    nombre +
+
+    "\n📋 Servicio: " +
+    servicio +
+
+    "\n📅 Fecha: " +
+    fecha +
+
+    "\n🕐 Hora: " +
+    hora +
+
+    "\n\n" +
+
+    "Nos pondremos en contacto contigo para confirmar tu cita."
+);
+
+
+/* =================================================
+   LIMPIAR FORMULARIO
+================================================= */
+
+      form.reset();
 
         } catch (error) {
 
