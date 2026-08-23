@@ -11,8 +11,7 @@
 
 const SUPABASE_URL = "https://osaziintfxijhvaafntx.supabase.co";
 
-const SUPABASE_KEY =
-    "sb_publishable_DnVAK4ZFS8gBILgyuFFcuw_sJt_YQ0T";
+const SUPABASE_KEY = "sb_publishable_DnVAK4ZFS8gBILgyuFFcuw_sJt_YQ0T";
 
 
 /* =========================================================
@@ -378,13 +377,9 @@ if (form) {
                INSERTAR EN TABLA CITAS
             ================================================= */
 
-            const {
-                data,
-                error
-            } = await supabaseClient
-                .from("citas")
-                .insert([cita])
-                .select();
+            const { error } = await supabaseClient
+             .from("citas")
+             .insert([cita]);
 
 
             /* =================================================
